@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall_Crack_Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .btn {
+            border: 2px solid gray;
+            color: gray;
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .filename {
+            margin-left: 8px;
+        }
+
+        button {
+            margin-top: 15px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crack Detection App</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="video" class="upload-btn-wrapper">
+                <div class="btn">Choose Video</div>
+                <input type="file" name="video" id="video" accept="video/*" required>
+            </label>
+            <div class="filename" id="filename">No file chosen</div>
+            <button type="submit">Detect Cracks</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("video").addEventListener("change", function () {
+            document.getElementById("filename").innerHTML = this.files[0].name;
+        });
+    </script>
+</body>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Crack Detection App</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="video" class="upload-btn-wrapper">
+                <div class="btn">Choose Video</div>
+                <input type="file" name="video" id="video" accept="video/*" required>
+            </label>
+            <div class="filename" id="filename">No file chosen</div>
+            <button type="submit">Detect Cracks</button>
+        </form>
+
+        <!-- Display input video -->
+        <video width="640" height="480" controls>
+            <source src="{{ url_for('static', filename=input_video) }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Display output video -->
+        <video width="640" height="480" controls>
+            <source src="{{ url_for('static', filename=output_video) }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        document.getElementById("video").addEventListener("change", function () {
+            document.getElementById("filename").innerHTML = this.files[0].name;
+        });
+    </script>
+</body>
+</html>
+
+
+
